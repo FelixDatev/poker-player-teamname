@@ -1,15 +1,15 @@
 class Player {
   static get VERSION() {
-    return '0.50';
+    return '0.51';
   }
 
   static betRequest(gameState, bet) {
-    bet(10000);
     console.log("gameState: " +  JSON.stringify(gameState));
     var player = gameState.players[gameState.in_action];
     var community_cards = gameState.community_cards;
 
     var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise;
+    bet(minimumRaise);
     var call = gameState.current_buy_in - player.bet;
 
     var card1 = player.hole_cards[0];
