@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.22';
+    return '0.23';
   }
 
   static betRequest(gameState, bet) {
@@ -35,7 +35,7 @@ class Player {
       
       if (card1.rank === card2.rank) {
         rate = rate + 2;
-      } 
+      }
 
       community_cards.forEach(function(card) {
         if(card.rank === card1.rank || card.rank === card2.rank) {
@@ -46,10 +46,13 @@ class Player {
         }
       });
 
+
       console.log("Rate: " + rate);
       if(rate > 2) {
         bet(minimumRaise);
-      } else if(rate > 0) {
+      } else if(rate > 1) {
+        bet(call);
+      } else if(rate > 0 && gameState.current_buy_in < 100) {
         bet(call);
       } else {
         bet(0);
