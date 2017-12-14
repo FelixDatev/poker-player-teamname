@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.12';
+    return '0.13';
   }
 
   static betRequest(gameState, bet) {
@@ -15,6 +15,7 @@ class Player {
 
     var card1 = player.hole_cards[0];
     var card2 = player.hole_cards[1];
+    var hand = [card1, card2];
 
     if(community_cards.length == 0) {
       if((card1.rank === 'A' && card2.rank === 'A') 
@@ -26,7 +27,7 @@ class Player {
         bet(minimumRaise);
       } else if (card1.rank === card2.rank) {
         bet(call);
-      } else if (card1.rank === "K" || card1.rank === "A" || card1.rank === "Q" || card1.rank === "J" || card2.rank === "K" || card2.rank === "A" || card2.rank === "Q" || card2.rank === "J") {
+      } else if (containsRank(hand, "A") || containsRank(hand, "K") || containsRank(hand, "Q") || containsRank(hand, "J")){
         bet(call);
       } else {
         bet(0);
@@ -41,6 +42,17 @@ class Player {
       });
       bet(call);
     }
+  }
+
+  static containsRank(cards, rank) {
+    var count = 0;
+    cards.forEach(function(card) {
+      if(card.rank === rank) {
+        count++;
+      }
+    });
+    if(count > 0) return true;
+    return false;
   }
 
   static showdown(gameState) {
