@@ -7,7 +7,7 @@ class Player {
 
     var player = gameState.players[gameState.in_action]
 
-    var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise;
+    var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise + 1000;
     var call = gameState.current_buy_in - player.bet;
 
     var holeCard1 = player.hole_cards[0];
@@ -15,13 +15,13 @@ class Player {
 
 
 
-//if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank) {
-    if (holeCard1.rank === holeCard2.rank) {
-      bet(minimumRaise);
-    } else {
-      bet(call);
+    if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
+      if (holeCard1.rank === holeCard2.rank) {
+        bet(minimumRaise);
+      } else {
+        bet(call);
+      }
     }
-//}
 
   }
 
