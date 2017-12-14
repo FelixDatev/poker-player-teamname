@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.5';
+    return '0.6';
   }
 
   static betRequest(gameState, bet) {
@@ -10,18 +10,10 @@ class Player {
     var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise;
     var call = gameState.current_buy_in - player.bet;
 
-    var holeCard1 = player.hole_cards[0];
-    var holeCard2 = player.hole_cards[1];
+    var card1 = player.hole_cards[0];
+    var card2 = player.hole_cards[1];
 
-    if ((holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") && (holeCard1.rank === holeCard2.rank)) {
-      bet(minimumRaise);
-    } else if (holeCard1.rank === holeCard2.rank) {
-      bet(call);
-    } else if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
-      bet(call);
-    } else {
-      bet(0);
-    }
+    var group = 'E';
 
     if((card1.rank === 'A' && card2.rank === 'A')
         || (card1.rank === 'K' && card2.rank === 'K')
@@ -50,7 +42,16 @@ class Player {
         || (card1.rank === '5' && card2.rank === '5')) {
       group = 'D';
     }
-    
+
+    if ((card1.rank === "K" || card1.rank === "A" || card1.rank === "Q" || card1.rank === "J") && (card1.rank === card2.rank)) {
+      bet(minimumRaise);
+    } else if (card1.rank === card2.rank) {
+      bet(call);
+    } else if (card1.rank === "K" || card1.rank === "A" || card1.rank === "Q" || card1.rank === "J") {
+      bet(call);
+    } else {
+      bet(0);
+    }
   }
 
   static showdown(gameState) {
