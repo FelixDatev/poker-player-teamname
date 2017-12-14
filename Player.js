@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.53';
+    return '0.54';
   }
 
   static betRequest(gameState, bet) {
@@ -45,6 +45,27 @@ class Player {
           }
         }
       });
+
+      // Flush
+      var hearts = 0;
+      var spades = 0;
+      var clubs = 0;
+      var diamonds = 0;
+      [card1, card2].concat(community_cards).forEach(function(card) {
+          if(card.suit == "hearts") {
+            hearts++;
+          } else if(card.suit == "spades") {
+            spades++;
+          } else if(card.suit == "clubs") {
+            clubs++;
+          } else {
+            diamonds++;
+          }
+      });
+
+      if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
+        rate = rate + 2;
+      }
 
       console.log("Rate: " + rate);
       if(rate > 2) {
