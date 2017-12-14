@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.46';
+    return '0.47';
   }
 
   static betRequest(gameState, bet) {
@@ -70,13 +70,12 @@ class Player {
       if(hearts > 3 || spades > 3 || clubs > 3 || diamonds > 3) {
         rate++;
       } else if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
-        rate++;
-        rate++;
+        rate = 3;
       }
 
       // Rating
       if(rate > 2) {
-        bet(minimumRaise);
+        bet(minimumRaise*2);
       } else if(rate > 1 && gameState.current_buy_in < 50) {
         bet(minimumRaise);
       } else if(rate > 0 && gameState.current_buy_in < 50) {
