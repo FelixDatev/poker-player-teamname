@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.28';
+    return '0.29';
   }
 
   static betRequest(gameState, bet) {
@@ -39,6 +39,30 @@ class Player {
       
       if (card1.rank === card2.rank) {
         rate = rate + 2;
+      }
+
+      var hearts = 0;
+      var spades = 0;
+      var clubs = 0;
+      var diamonds = 0;
+      [card1, card2].concat(community_cards).forEach(function(card) {
+          if(card.suit == "hearts") {
+            hearts++;
+          } else if(card.suit == "spades") {
+            spades++;
+          } else if(card.suit == "clubs") {
+            clubs++;
+          } else {
+            diamonds++;
+          }
+      });
+
+      if(hearts > 3 || spades > 3 || clubs > 3 || diamonds > 3) {
+        rate++;
+      }else if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
+        rate++;
+        rate++;
+        rate++;
       }
 
       community_cards.forEach(function(card) {
