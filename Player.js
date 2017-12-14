@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.54';
+    return '0.55';
   }
 
   static betRequest(gameState, bet) {
@@ -33,7 +33,7 @@ class Player {
         rate++;
       }
       
-      if (card1.rank === card2.rank) {
+      if (card1.rank === card2.rank && card1.rank !== "2" && card1.rank !== "3" && card1.rank !== "4" && card1.rank !== "5") {
         rate = rate + 2;
       } 
 
