@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.29';
+    return '0.30';
   }
 
   static betRequest(gameState, bet) {
@@ -75,9 +75,13 @@ class Player {
       });
 
       console.log("Rate: " + rate);
-      if(rate > 2) {
+      if(rate > 3) {
         bet(minimumRaise);
-      } else if(rate > 0 && gameState.current_buy_in < 90) {
+      } else if(rate > 2 && gameState.current_buy_in < 200) {
+        bet(minimumRaise);
+      } else if(rate > 1 && gameState.current_buy_in < 100) {
+        bet(call);
+      } else if(rate > 0 && gameState.current_buy_in < 50) {
         bet(call);
       } else {
         bet(0);
