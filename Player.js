@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.7';
+    return '0.7.1';
   }
 
   static betRequest(gameState, bet) {
@@ -9,7 +9,7 @@ class Player {
     var buyin = gameState.current_buy_in;
     var minraise = gameState.minimum_raise;
 
-    var minimumRaise = buyin - player.bet + minraise*2;
+    var minimumRaise = buyin - player.bet + minraise;
     var call = buyin - player.bet;
 
     var card1 = player.hole_cards[0];
