@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.32';
+    return '0.33';
   }
 
   static betRequest(gameState, bet) {
@@ -38,7 +38,7 @@ class Player {
       }
       
       if (card1.rank === card2.rank) {
-        rate = rate + 2;
+        rate++;
       }
 
       var hearts = 0;
@@ -59,7 +59,7 @@ class Player {
 
       if(hearts > 3 || spades > 3 || clubs > 3 || diamonds > 3) {
         rate++;
-      }else if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
+      } else if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
         rate++;
         rate++;
         rate++;
