@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.55';
+    return '0.56';
   }
 
   static betRequest(gameState, bet) {
@@ -20,7 +20,7 @@ class Player {
         bet(minimumRaise);
       } else if (card1.rank === card2.rank) {
         bet(call);
-      } else if (card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J" || card2.rank === "A" || card2.rank === "K" || card2.rank === "Q" || card2.rank === "J") {
+      } else if ((card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J") && ( card2.rank === "A" || card2.rank === "K" || card2.rank === "Q" || card2.rank === "J")) {
         bet(call);
       } else {
         bet(0);
@@ -33,7 +33,7 @@ class Player {
         rate++;
       }
       
-      if (card1.rank === card2.rank && card1.rank !== "2" && card1.rank !== "3" && card1.rank !== "4" && card1.rank !== "5") {
+      if (card1.rank === card2.rank && card1.rank !== "2" && card1.rank !== "3") {
         rate = rate + 2;
       } 
 
