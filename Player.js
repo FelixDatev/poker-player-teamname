@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.30';
+    return '0.32';
   }
 
   static betRequest(gameState, bet) {
@@ -84,7 +84,11 @@ class Player {
       } else if(rate > 0 && gameState.current_buy_in < 50) {
         bet(call);
       } else {
-        bet(0);
+        if(community_cards.length > 3) {
+          bet(call);
+        } else {
+          bet(0);
+        }
       }
     }
   }
