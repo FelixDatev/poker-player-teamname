@@ -1,12 +1,12 @@
 class Player {
-  static getVERSION() {
+  static get VERSION() {
     return '0.3';
   }
 
   static betRequest(gameState, bet) {
-/*
-    var player = gameState.players[gameState.in_action];
 
+    var player = gameState.players[gameState.in_action];
+/*
     var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise;
     var call = gameState.current_buy_in - player.bet;
 
