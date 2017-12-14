@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.44';
+    return '0.45';
   }
 
   static betRequest(gameState, bet) {
@@ -34,31 +34,23 @@ class Player {
       if ((card1.rank === "A" && card2.rank === "K") || (card1.rank === "K" && card2.rank === "A")) {
         rate++;
       }
-      
-      if (card1.rank === card2.rank) {
+
+      // Pairs
+      if((card1.rank === "A" && card2.rank === "A")
+      || (card1.rank === "K" && card2.rank === "K")
+      || (card1.rank === "Q" && card2.rank === "Q")
+      || (card1.rank === "J" && card2.rank === "J")) {
+        rate++;
         rate++;
       }
 
       community_cards.forEach(function(card) {
         if(card.rank === card1.rank || card.rank === card2.rank) {
           rate++;
-          if(card.rank === "A" || card.rank === "K" || card.rank === "Q") {
-            rate++;
-          }
         }
       });
 
-     if(rate < 2 && ((card1.rank === "2" && card2.rank === "2")
-                  || (card1.rank === "3" && card2.rank === "3")
-                  || (card1.rank === "4" && card2.rank === "4")
-                  || (card1.rank === "5" && card2.rank === "5")
-                  || (card1.rank === "6" && card2.rank === "6")
-                  || (card1.rank === "7" && card2.rank === "7")
-                  || (card1.rank === "8" && card2.rank === "8")
-                  || (card1.rank === "9" && card2.rank === "9"))) {
-        rate = 0;
-      }
-
+      // Flush
       var hearts = 0;
       var spades = 0;
       var clubs = 0;
@@ -80,10 +72,9 @@ class Player {
       } else if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
         rate++;
         rate++;
-        rate++;
       }
 
-      console.log("Rate: " + rate);
+      // Rating
       if(rate > 2 && gameState.current_buy_in < 200) {
         bet(minimumRaise);
       } else if(rate > 1 && gameState.current_buy_in < 100) {
