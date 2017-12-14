@@ -13,7 +13,7 @@ class Player {
     if (holeCard1[rank] == holeCard2[rank]) {
       bet(minimumRaise)
     } else {
-      bet(10001);
+      bet(0);
     }
 
     for each (comCard in gameState.community_cards) {
