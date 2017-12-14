@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.24';
+    return '0.25';
   }
 
   static betRequest(gameState, bet) {
@@ -40,7 +40,7 @@ class Player {
       community_cards.forEach(function(card) {
         if(card.rank === card1.rank || card.rank === card2.rank) {
           rate++;
-          if(card.rank === "A" || card.rank === "K" || card.rank === "Q" || card.rank === "J") {
+          if(card.rank === "A" || card.rank === "K" || card.rank === "Q") {
             rate++;
           }
         }
