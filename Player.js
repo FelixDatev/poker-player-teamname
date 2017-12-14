@@ -5,14 +5,14 @@ class Player {
 
   static betRequest(gameState, bet) {
 
-    var minimumRaise = gameState.current_buy_in - gameState.players[in_action][bet] + gameState.minimum_raise
-    var call = gameState.current_buy_in - gameState.players[in_action][bet]
+    var minimumRaise = gameState.current_buy_in - gameState.players[in_action][bet] + gameState.minimum_raise;
+    var call = gameState.current_buy_in - gameState.players[in_action][bet];
 
-    var holeCard1 = gameState.players[in_action][hole_cards][0]
-    var holeCard2 = gameState.players[in_action][hole_cards][1]
+    var holeCard1 = gameState.players[in_action][hole_cards][0];
+    var holeCard2 = gameState.players[in_action][hole_cards][1];
 
     if (holeCard1[rank] == holeCard2[rank]) {
-      bet(minimumRaise)
+      bet(minimumRaise);
     } else {
       bet(call);
     }
