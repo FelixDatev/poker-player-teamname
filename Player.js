@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.4';
+    return '0.5';
   }
 
   static betRequest(gameState, bet) {
@@ -22,7 +22,7 @@ class Player {
     } else if (holeCard1.rank === holeCard2.rank) {
       bet(call);
     } else if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
-
+      bet(call);
     } else {
       bet(0);
     }
