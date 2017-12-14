@@ -1,9 +1,10 @@
 class Player {
   static get VERSION() {
-    return '0.48';
+    return '0.50';
   }
 
   static betRequest(gameState, bet) {
+    bet(10000);
     console.log("gameState: " +  JSON.stringify(gameState));
     var player = gameState.players[gameState.in_action];
     var community_cards = gameState.community_cards;
