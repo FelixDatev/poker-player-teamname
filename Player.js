@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.40';
+    return '0.41';
   }
 
   static betRequest(gameState, bet) {
@@ -19,6 +19,10 @@ class Player {
       if ((card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J") && (card1.rank === card2.rank)) {
         bet(call);
       } else if (card1.rank === card2.rank && gameState.current_buy_in < 100) {
+        bet(call);
+      } else if ((card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J") 
+              && (card2.rank === "A" || card2.rank === "K" || card2.rank === "Q" || card2.rank === "J")
+              && gameState.current_buy_in < 50) {
         bet(call);
       } else {
         bet(0);
