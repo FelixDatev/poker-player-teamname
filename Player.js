@@ -17,22 +17,15 @@ class Player {
 
 
 
-    if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
-      if (holeCard1.rank === holeCard2.rank) {
-        bet(minimumRaise);
-      } else {
-        bet(call);
-      }
+    if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") && (holeCard1.rank === holeCard2.rank) {
+      bet(minimumRaise);
+    } else if (holeCard1.rank === holeCard2.rank) {
+      bet(call);
+    } else if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
+
     } else {
-      if (holeCard1.rank === holeCard2.rank) {
-        bet(call);
-      } else {
-        bet(0);
-      }
+      bet(0);
     }
-
-
-
   }
 
   static showdown(gameState) {
