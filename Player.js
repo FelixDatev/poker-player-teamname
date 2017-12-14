@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.45';
+    return '0.46';
   }
 
   static betRequest(gameState, bet) {
@@ -75,14 +75,14 @@ class Player {
       }
 
       // Rating
-      if(rate > 2 && gameState.current_buy_in < 200) {
+      if(rate > 2) {
         bet(minimumRaise);
-      } else if(rate > 1 && gameState.current_buy_in < 100) {
-        bet(call);
+      } else if(rate > 1 && gameState.current_buy_in < 50) {
+        bet(minimumRaise);
       } else if(rate > 0 && gameState.current_buy_in < 50) {
         bet(call);
       } else {
-        if(community_cards.length > 3 && gameState.current_buy_in < 100) {
+        if(community_cards.length > 3 && gameState.current_buy_in < 50) {
           bet(call);
         } else {
           bet(0);
