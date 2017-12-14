@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.38';
+    return '0.39';
   }
 
   static betRequest(gameState, bet) {
@@ -19,8 +19,6 @@ class Player {
       if ((card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J") && (card1.rank === card2.rank)) {
         bet(minimumRaise);
       } else if (card1.rank === card2.rank) {
-        bet(call);
-      } else if (card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J" || card2.rank === "A" || card2.rank === "K" || card2.rank === "Q" || card2.rank === "J") {
         bet(call);
       } else {
         bet(0);
