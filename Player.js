@@ -14,17 +14,18 @@ class Player {
     var holeCard2 = player.hole_cards[1];
 
 
-if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
-  if (holeCard1.rank === holeCard2.rank) {
-    bet(100);
-  }
-}
-
+    if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
+      if (holeCard1.rank === holeCard2.rank) {
+        bet(minimumRaise);
+      }
+    } else {
       if (holeCard1.rank === holeCard2.rank) {
         bet(minimumRaise);
       } else {
         bet(call);
       }
+    }
+
 
   }
 
