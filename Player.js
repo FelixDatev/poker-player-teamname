@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.37';
+    return '0.38';
   }
 
   static betRequest(gameState, bet) {
@@ -28,10 +28,6 @@ class Player {
     } else {
       // Post-Flop
       var rate = 0;
-
-      if (card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card2.rank === "A" || card2.rank === "K" || card2.rank === "Q") {
-        rate++;
-      }
 
       if ((card1.rank === "A" && card2.rank === "K") || (card1.rank === "K" && card2.rank === "A")) {
         rate++;
