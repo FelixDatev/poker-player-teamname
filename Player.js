@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.57';
+    return '1.0';
   }
 
   static betRequest(gameState, bet) {
@@ -10,7 +10,6 @@ class Player {
 
     var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise;
     var call = gameState.current_buy_in - player.bet;
-    bat(minimumRaise);
 
     var card1 = player.hole_cards[0];
     var card2 = player.hole_cards[1];
@@ -46,27 +45,6 @@ class Player {
           }
         }
       });
-
-      // Flush
-      var hearts = 0;
-      var spades = 0;
-      var clubs = 0;
-      var diamonds = 0;
-      [card1, card2].concat(community_cards).forEach(function(card) {
-          if(card.suit == "hearts") {
-            hearts++;
-          } else if(card.suit == "spades") {
-            spades++;
-          } else if(card.suit == "clubs") {
-            clubs++;
-          } else {
-            diamonds++;
-          }
-      });
-
-      if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
-        rate = rate + 2;
-      }
 
       console.log("Rate: " + rate);
       if(rate > 2) {
