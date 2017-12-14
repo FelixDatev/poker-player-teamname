@@ -1,15 +1,13 @@
 class Player {
   static get VERSION() {
-    return '0.51';
+    return '0.52';
   }
 
   static betRequest(gameState, bet) {
-    console.log("gameState: " +  JSON.stringify(gameState));
     var player = gameState.players[gameState.in_action];
     var community_cards = gameState.community_cards;
 
     var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise;
-    bet(minimumRaise);
     var call = gameState.current_buy_in - player.bet;
 
     var card1 = player.hole_cards[0];
@@ -72,7 +70,7 @@ class Player {
       if(hearts > 3 || spades > 3 || clubs > 3 || diamonds > 3) {
         rate++;
       } else if(hearts > 4 || spades > 4 || clubs > 4 || diamonds > 4) {
-        rate = 3;
+        bet(10000);
       }
 
       // Rating
