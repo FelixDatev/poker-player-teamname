@@ -1,10 +1,10 @@
 class Player {
   static getVERSION() {
-    return '0.2';
+    return '0.3';
   }
 
   static betRequest(gameState, bet) {
-
+/*
     var player = gameState.players[gameState.in_action];
 
     var minimumRaise = gameState.current_buy_in - player.bet + gameState.minimum_raise;
@@ -12,7 +12,11 @@ class Player {
 
     var holeCard1 = player.hole_cards[0];
     var holeCard2 = player.hole_cards[1];
+    */
 
+    bet(10001);
+
+/*
 
     if (holeCard1.rank === "K" || holeCard1.rank === "A" || holeCard1.rank === "Q" || holeCard1.rank === "J") {
       if (holeCard1.rank === holeCard2.rank) {
@@ -25,6 +29,7 @@ class Player {
         bet(call);
       }
     }
+    */
 
 
   }
