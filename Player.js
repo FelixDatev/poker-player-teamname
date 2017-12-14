@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.16';
+    return '0.17';
   }
 
   static betRequest(gameState, bet) {
@@ -32,15 +32,25 @@ class Player {
         bet(0);
       }
     } else {
-      var sameCards = 0;
+      var sameCard1 = 0;
+      var sameCard2 = 0;
+
+      if (card1.rank === card2.rank) {
+        sameCard1++;
+        sameCard2++;
+      } 
+
       community_cards.forEach(function(card) {
         if((card.rank === 'A' || card.rank === 'K' || card.rank === 'Q' || card.rank === 'J')  && (card.rank === card1.rank || card.rank === card2.rank)) {
           bet(minimumRaise);
-        } else if(card.rank === card1.rank || card.rank === card2.rank) {
-          sameCards++;
+        } else if(card.rank === card1.rank) {
+          sameCards1++;
+        } else if(card.rank === card2.rank) {
+          sameCards2++;
         }
       });
-      if(sameCards > 2) {
+
+      if(sameCards1 > 1 || sameCards2 > 1) {
         bet(minimumRaise);
       } else {
         bet(call);
