@@ -6,6 +6,7 @@ class Player {
   static betRequest(gameState, bet) {
 
     var minimumRaise = gameState.current_buy_in - gameState.players[in_action][bet] + gameState.minimum_raise
+    var call = gameState.current_buy_in - gameState.players[in_action][bet]
 
     var holeCard1 = gameState.players[in_action][hole_cards][0]
     var holeCard2 = gameState.players[in_action][hole_cards][1]
@@ -13,7 +14,7 @@ class Player {
     if (holeCard1[rank] == holeCard2[rank]) {
       bet(minimumRaise)
     } else {
-      bet(0);
+      bet(call);
     }
 
     for each (comCard in gameState.community_cards) {
