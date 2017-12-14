@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.47';
+    return '0.48';
   }
 
   static betRequest(gameState, bet) {
@@ -17,7 +17,7 @@ class Player {
     if(community_cards.length == 0) {
       // Pre-Flop
       if ((card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J") && (card1.rank === card2.rank)) {
-        bet(minimumRaise);
+        bet(call);
       } else if (card1.rank === card2.rank && gameState.current_buy_in < 100) {
         bet(call);
       } else if ((card1.rank === "A" || card1.rank === "K" || card1.rank === "Q" || card1.rank === "J") 
@@ -44,6 +44,7 @@ class Player {
         rate++;
       }
 
+      var pair = 0;
       community_cards.forEach(function(card) {
         if(card.rank === card1.rank || card.rank === card2.rank) {
           rate++;
