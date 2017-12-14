@@ -11,7 +11,7 @@ class Player {
     var holeCard1 = gameState.players[in_action][hole_cards][0];
     var holeCard2 = gameState.players[in_action][hole_cards][1];
 
-    if (holeCard1.rank == holeCard2.rank) {
+    if (holeCard1.rank === holeCard2.rank) {
       bet(minimumRaise);
     } else {
       bet(call);
