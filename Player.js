@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.42';
+    return '0.43';
   }
 
   static betRequest(gameState, bet) {
@@ -48,14 +48,14 @@ class Player {
         }
       });
 
-     if(rate < 2 && ((card1.rank === "2" || card2.rank === "2")
-                  || (card1.rank === "3" || card2.rank === "3")
-                  || (card1.rank === "4" || card2.rank === "4")
-                  || (card1.rank === "5" || card2.rank === "5")
-                  || (card1.rank === "6" || card2.rank === "6")
-                  || (card1.rank === "7" || card2.rank === "7")
-                  || (card1.rank === "8" || card2.rank === "8")
-                  || (card1.rank === "9" || card2.rank === "9"))) {
+     if(rate < 2 && ((card1.rank === "2" && card2.rank === "2")
+                  || (card1.rank === "3" && card2.rank === "3")
+                  || (card1.rank === "4" && card2.rank === "4")
+                  || (card1.rank === "5" && card2.rank === "5")
+                  || (card1.rank === "6" && card2.rank === "6")
+                  || (card1.rank === "7" && card2.rank === "7")
+                  || (card1.rank === "8" && card2.rank === "8")
+                  || (card1.rank === "9" && card2.rank === "9"))) {
         rate = 0;
       }
 
