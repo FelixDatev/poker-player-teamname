@@ -17,9 +17,7 @@ class Player {
       bet(call);
     }
 
-    for each (comCard in gameState.community_cards) {
-
-    }
+    
 
 
   }
