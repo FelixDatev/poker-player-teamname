@@ -1,10 +1,10 @@
 class Player {
   static get VERSION() {
-    return '0.23';
+    return '0.24';
   }
 
   static betRequest(gameState, bet) {
-
+    console.log("gameState: " + gameState);
     var player = gameState.players[gameState.in_action];
     var community_cards = gameState.community_cards;
 
@@ -45,7 +45,6 @@ class Player {
           }
         }
       });
-
 
       console.log("Rate: " + rate);
       if(rate > 2) {
