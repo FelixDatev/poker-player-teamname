@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.36';
+    return '0.37';
   }
 
   static betRequest(gameState, bet) {
@@ -56,7 +56,8 @@ class Player {
                   || (card1.rank === "5" || card2.rank === "5")
                   || (card1.rank === "6" || card2.rank === "6")
                   || (card1.rank === "7" || card2.rank === "7")
-                  || (card1.rank === "8" || card2.rank === "8"))) {
+                  || (card1.rank === "8" || card2.rank === "8")
+                  || (card1.rank === "9" || card2.rank === "9"))) {
         rate = 0;
       }
 
@@ -94,7 +95,7 @@ class Player {
       } else if(rate > 0 && gameState.current_buy_in < 50) {
         bet(call);
       } else {
-        if(community_cards.length > 3) {
+        if(community_cards.length > 3 && gameState.current_buy_in < 100) {
           bet(call);
         } else {
           bet(0);
