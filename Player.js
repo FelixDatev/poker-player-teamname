@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.33';
+    return '0.34';
   }
 
   static betRequest(gameState, bet) {
@@ -41,6 +41,25 @@ class Player {
         rate++;
       }
 
+      community_cards.forEach(function(card) {
+        if(card.rank === card1.rank || card.rank === card2.rank) {
+          rate++;
+          if(card.rank === "A" || card.rank === "K" || card.rank === "Q") {
+            rate++;
+          }
+        }
+      });
+
+      if(rank < 2 && ((card1.rank === "2" || card2.rank === "2")
+                  || (card1.rank === "3" || card2.rank === "3")
+                  || (card1.rank === "4" || card2.rank === "4")
+                  || (card1.rank === "5" || card2.rank === "5")
+                  || (card1.rank === "6" || card2.rank === "6")
+                  || (card1.rank === "7" || card2.rank === "7")
+                  || (card1.rank === "8" || card2.rank === "8"))) {
+        rank = 0;
+      }
+
       var hearts = 0;
       var spades = 0;
       var clubs = 0;
@@ -64,15 +83,6 @@ class Player {
         rate++;
         rate++;
       }
-
-      community_cards.forEach(function(card) {
-        if(card.rank === card1.rank || card.rank === card2.rank) {
-          rate++;
-          if(card.rank === "A" || card.rank === "K" || card.rank === "Q") {
-            rate++;
-          }
-        }
-      });
 
       console.log("Rate: " + rate);
       if(rate > 3) {
