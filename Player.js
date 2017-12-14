@@ -1,6 +1,6 @@
 class Player {
   static get VERSION() {
-    return '0.20';
+    return '0.21';
   }
 
   static betRequest(gameState, bet) {
@@ -32,13 +32,6 @@ class Player {
         bet(0);
       }
     } else {
-      community_cards.forEach(function(card) {
-        if((card.rank === 'A' || card.rank === 'K' || card.rank === 'Q' || card.rank === 'J')  && (card.rank === card1.rank || card.rank === card2.rank)) {
-            bet(minimumRaise);
-        } else if(card.rank === card1.rank || card.rank === card2.rank) {
-            bet(call);
-        }
-      });
       bet(call);
     }
   }
